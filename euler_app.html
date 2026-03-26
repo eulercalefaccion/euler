@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>EULER — Generador de Presupuestos</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: #f0f4f8;
+      color: #222;
+      min-height: 100vh;
+    }
+    header {
+      background: #0D2A4E;
+      color: white;
+      padding: 18px 36px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    }
+    header h1 { font-size: 1.6rem; letter-spacing: 2px; }
+    header span { color: #F5A623; font-size: 0.95rem; margin-top: 2px; }
+    .container {
+      max-width: 860px;
+      margin: 36px auto;
+      padding: 0 20px;
+    }
+    .card {
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+      padding: 28px 32px;
+      margin-bottom: 22px;
+    }
+    .card h2 {
+      font-size: 1.05rem;
+      color: #0D2A4E;
+      margin-bottom: 18px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      border-bottom: 2px solid #E8EFF7;
+      padding-bottom: 10px;
+    }
+    .badge {
+      background: #F5A623;
+      color: white;
+      border-radius: 50%;
+      width: 24px; height: 24px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.8rem; font-weight: bold; flex-shrink: 0;
+    }
+    label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #444;
+      margin-bottom: 5px;
+      margin-top: 12px;
+    }
+    input[type="text"], input[type="date"], input[type="file"] {
+      width: 100%;
+      padding: 9px 12px;
+      border: 1.5px solid #ccd5de;
+      border-radius: 6px;
+      font-size: 0.95rem;
+      transition: border-color 0.2s;
+      background: #fafbfc;
+    }
+    input[type="text"]:focus, input[type="date"]:focus {
+      border-color: #1A4A7A;
+      outline: none;
+      background: white;
+    }
+    .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .grid3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+
+    /* Equipos */
+    #equipos-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 10px;
+      margin-top: 6px;
+    }
+    .equipo-item {
+      border: 1.5px solid #ccd5de;
+      border-radius: 8px;
+      padding: 10px 14px;
+      cursor: pointer;
+      transition: all 0.15s;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      background: #fafbfc;
+    }
+    .equipo-item:hover { border-color: #1A4A7A; background: #f0f6ff; }
+    .equipo-item.selected {
+      border-color: #1A4A7A;
+      background: #E8EFF7;
+    }
+    .equipo-item input[type="checkbox"] {
+      width: 16px; height: 16px; margin-top: 2px; flex-shrink: 0; cursor: pointer;
+      accent-color: #1A4A7A;
+    }
+    .equipo-nombre { font-size: 0.88rem; font-weight: 600; color: #0D2A4E; }
+    .equipo-cat { font-size: 0.78rem; color: #666; margin-top: 2px; }
+
+    /* Archivo PDF */
+    .file-drop {
+      border: 2px dashed #aab5c0;
+      border-radius: 8px;
+      padding: 24px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.2s;
+      background: #fafbfc;
+    }
+    .file-drop:hover, .file-drop.dragover {
+      border-color: #1A4A7A;
+      background: #E8EFF7;
+    }
+    .file-drop .icon { font-size: 2.5rem; margin-bottom: 8px; }
+    .file-drop p { color: #555; font-size: 0.9rem; }
+    .file-drop .filename {
+      margin-top: 10px; font-weight: 600;
+      color: #0D2A4E; font-size: 0.95rem;
+    }
+    #file-input { display: none; }
+
+    /* Botón */
+    .btn-generar {
+      width: 100%;
+      padding: 16px;
+      background: #0D2A4E;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      cursor: pointer;
+      transition: background 0.2s;
+      margin-top: 8px;
+    }
+    .btn-generar:hover:not(:disabled) { background: #1A4A7A; }
+    .btn-generar:disabled { background: #9aaebd; cursor: not-allowed; }
+
+    /* Estado */
+    #estado {
+      display: none;
+      margin-top: 16px;
+      padding: 14px 18px;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      font-weight: 500;
+    }
+    #estado.loading {
+      background: #E8EFF7;
+      color: #0D2A4E;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    #estado.success {
+      background: #e6f4ea;
+      color: #1a6b3a;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    #estado.error {
+      background: #fdecea;
+      color: #c0392b;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .spinner {
+      width: 22px; height: 22px;
+      border: 3px solid #ccd8e8;
+      border-top-color: #0D2A4E;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+      flex-shrink: 0;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* Loading catálogo */
+    #equipos-loading {
+      color: #888; font-size: 0.9rem; padding: 10px 0;
+    }
+    /* Historial */
+    .historial-item {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 10px 14px; border-radius: 7px; background: #fafbfc;
+      border: 1.5px solid #e0e7ef; margin-bottom: 8px; gap: 12px;
+    }
+    .historial-item:hover { border-color: #1A4A7A; background: #f0f6ff; }
+    .historial-info { flex: 1; }
+    .historial-cliente { font-weight: 700; color: #0D2A4E; font-size: 0.95rem; }
+    .historial-detalle { font-size: 0.8rem; color: #666; margin-top: 2px; }
+    .btn-descargar {
+      background: #0D2A4E; color: white; border: none; border-radius: 6px;
+      padding: 7px 14px; font-size: 0.82rem; cursor: pointer; white-space: nowrap;
+    }
+    .btn-descargar:hover { background: #1A4A7A; }
+    /* Filtros historial */
+    .historial-filtros {
+      display: flex; gap: 12px; align-items: flex-end;
+      flex-wrap: wrap; margin-bottom: 14px;
+      padding: 14px 16px; background: #f4f7fb;
+      border-radius: 8px; border: 1px solid #e0e7ef;
+    }
+    .filtro-grupo { display: flex; flex-direction: column; gap: 4px; flex: 1; min-width: 140px; }
+    .filtro-grupo label { font-size: 0.78rem; font-weight: 600; color: #555; }
+    .filtro-grupo input {
+      padding: 7px 10px; border: 1.5px solid #ccd5de; border-radius: 6px;
+      font-size: 0.88rem; background: white;
+    }
+    .filtro-grupo input:focus { border-color: #1A4A7A; outline: none; }
+    .btn-limpiar {
+      background: none; border: 1.5px solid #ccd5de; border-radius: 6px;
+      padding: 7px 14px; font-size: 0.82rem; color: #666; cursor: pointer;
+      align-self: flex-end; white-space: nowrap;
+    }
+    .btn-limpiar:hover { border-color: #c0392b; color: #c0392b; }
+  </style>
+</head>
+<body>
+
+<header>
+  <div>
+    <h1>⚡ EULER</h1>
+    <span>Generador de Presupuestos PDF</span>
+  </div>
+</header>
+
+<div class="container">
+
+  <!-- Paso 1: PDF de Gesdatta -->
+  <div class="card">
+    <h2><span class="badge">1</span> PDF de Gesdatta</h2>
+    <div class="file-drop" id="file-drop" onclick="document.getElementById('file-input').click()">
+      <div class="icon">📄</div>
+      <p>Hacé clic aquí o arrastrá el PDF de Gesdatta</p>
+      <div class="filename" id="filename-label" style="display:none"></div>
+    </div>
+    <input type="file" id="file-input" accept=".pdf" />
+  </div>
+
+  <!-- Paso 2: Datos del presupuesto -->
+  <div class="card">
+    <h2><span class="badge">2</span> Datos del Presupuesto</h2>
+    <div class="grid2">
+      <div>
+        <label for="cliente">Cliente</label>
+        <input type="text" id="cliente" placeholder="Nombre del cliente" />
+      </div>
+      <div>
+        <label for="numero">N° de Presupuesto</label>
+        <input type="text" id="numero" placeholder="Ej: 2025-045" />
+      </div>
+    </div>
+    <div>
+      <label for="direccion">Dirección de Obra</label>
+      <input type="text" id="direccion" placeholder="Calle, número, ciudad" />
+    </div>
+    <div class="grid2">
+      <div>
+        <label for="fecha">Fecha</label>
+        <input type="date" id="fecha" />
+      </div>
+      <div>
+        <label for="total">Monto Total</label>
+        <input type="text" id="total" placeholder="Ej: $ 1.250.000" />
+      </div>
+    </div>
+  </div>
+
+  <!-- Paso 3: Equipos -->
+  <div class="card">
+    <h2><span class="badge">3</span> Equipos a Incluir</h2>
+    <div id="equipos-loading">Cargando catálogo...</div>
+    <div id="equipos-grid" style="display:none"></div>
+  </div>
+
+  <!-- Generar -->
+  <div class="card">
+    <button class="btn-generar" id="btn-generar" onclick="generarPDF()" disabled>
+      📑 GENERAR PRESUPUESTO PDF
+    </button>
+    <div id="estado"></div>
+  </div>
+
+  <!-- Historial -->
+  <div class="card">
+    <h2 style="cursor:pointer" onclick="toggleHistorial()">
+      🕓 Historial de Presupuestos
+      <span id="historial-toggle" style="float:right;font-size:0.85rem;color:#888">▼ ver</span>
+    </h2>
+    <div id="historial-contenido" style="display:none;margin-top:14px">
+
+      <!-- Filtros -->
+      <div class="historial-filtros">
+        <div class="filtro-grupo">
+          <label>Cliente</label>
+          <input type="text" id="filtro-cliente" placeholder="Buscar por nombre..." oninput="filtrarHistorial()" />
+        </div>
+        <div class="filtro-grupo">
+          <label>Desde</label>
+          <input type="date" id="filtro-desde" onchange="filtrarHistorial()" />
+        </div>
+        <div class="filtro-grupo">
+          <label>Hasta</label>
+          <input type="date" id="filtro-hasta" onchange="filtrarHistorial()" />
+        </div>
+        <button class="btn-limpiar" onclick="limpiarFiltros()">✕ Limpiar</button>
+      </div>
+      <div id="historial-contador" style="font-size:0.82rem;color:#888;margin-bottom:10px"></div>
+
+      <div id="historial-lista"><span style="color:#888;font-size:0.9rem">Cargando...</span></div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+const BACKEND = window.location.port === '8080' ? `http://${window.location.hostname}:5050` : window.location.origin;
+let catalogoData = {};
+let archivoGesdatta = null;
+
+// Cargar catálogo al inicio
+async function cargarCatalogo() {
+  try {
+    const res = await fetch(BACKEND + '/catalogo');
+    catalogoData = await res.json();
+    renderCatalogo(catalogoData);
+    document.getElementById('equipos-loading').style.display = 'none';
+    document.getElementById('equipos-grid').style.display = 'grid';
+  } catch(e) {
+    document.getElementById('equipos-loading').textContent =
+      '⚠️ No se pudo conectar con el servidor. ¿Está corriendo el backend?';
+    document.getElementById('equipos-loading').style.color = '#c0392b';
+  }
+}
+
+function renderCatalogo(catalogo) {
+  const grid = document.getElementById('equipos-grid');
+  grid.innerHTML = '';
+  for (const [key, eq] of Object.entries(catalogo)) {
+    const div = document.createElement('div');
+    div.className = 'equipo-item';
+    div.dataset.key = key;
+    div.innerHTML = `
+      <input type="checkbox" id="eq_${key}" value="${key}" />
+      <div>
+        <div class="equipo-nombre">${eq.nombre}</div>
+        <div class="equipo-cat">${eq.categoria}</div>
+      </div>
+    `;
+    div.onclick = function(e) {
+      if (e.target.tagName !== 'INPUT') {
+        const cb = this.querySelector('input');
+        cb.checked = !cb.checked;
+      }
+      this.classList.toggle('selected', this.querySelector('input').checked);
+    };
+    div.querySelector('input').addEventListener('change', function() {
+      div.classList.toggle('selected', this.checked);
+    });
+    grid.appendChild(div);
+  }
+  verificarFormulario();
+}
+
+// Drag & drop del PDF
+const fileDrop = document.getElementById('file-drop');
+const fileInput = document.getElementById('file-input');
+
+fileDrop.addEventListener('dragover', e => { e.preventDefault(); fileDrop.classList.add('dragover'); });
+fileDrop.addEventListener('dragleave', () => fileDrop.classList.remove('dragover'));
+fileDrop.addEventListener('drop', e => {
+  e.preventDefault();
+  fileDrop.classList.remove('dragover');
+  const file = e.dataTransfer.files[0];
+  if (file && file.type === 'application/pdf') setFile(file);
+});
+fileInput.addEventListener('change', () => {
+  if (fileInput.files[0]) setFile(fileInput.files[0]);
+});
+
+function setFile(file) {
+  archivoGesdatta = file;
+  document.getElementById('filename-label').textContent = '✅ ' + file.name;
+  document.getElementById('filename-label').style.display = 'block';
+  fileDrop.querySelector('p').textContent = 'Leyendo datos del presupuesto...';
+  fileDrop.querySelector('p').style.display = 'block';
+  document.getElementById('btn-generar').disabled = false;
+  extraerDatosGesdatta(file);
+}
+
+async function extraerDatosGesdatta(file) {
+  try {
+    pdfjsLib.GlobalWorkerOptions.workerSrc =
+      'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+
+    const arrayBuffer = await file.arrayBuffer();
+    const pdf = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
+
+    let textoCompleto = '';
+    for (let i = 1; i <= Math.min(pdf.numPages, 3); i++) {
+      const page = await pdf.getPage(i);
+      const content = await page.getTextContent();
+      textoCompleto += content.items.map(item => item.str).join(' ') + '\n';
+    }
+
+    // Extraer cliente
+    const rCliente = /Apellido y Nombre\s*\/\s*Raz[oó]n Social\s*[:\s]+([A-ZÁÉÍÓÚÑ][A-ZÁÉÍÓÚÑA-Za-z\s.]+?)\s+(?:DNI|CUIT)/i;
+    const mCliente = textoCompleto.match(rCliente);
+    if (mCliente) {
+      document.getElementById('cliente').value = mCliente[1].trim();
+    }
+
+    // Extraer número de presupuesto
+    const rNumero = /Comprobante\s*Nro\s*:\s*PPTO\s+([\d]{4}-[\d]+)/i;
+    const mNumero = textoCompleto.match(rNumero);
+    if (mNumero) {
+      document.getElementById('numero').value = mNumero[1].trim();
+    }
+
+    // Extraer domicilio del cliente (el que está cerca de IVA)
+    const rDir = /Domicilio\s*:\s+([A-ZÁÉÍÓÚÑ][^I]+?)\s+IVA/i;
+    const mDir = textoCompleto.match(rDir);
+    if (mDir) {
+      document.getElementById('direccion').value = mDir[1].trim();
+    }
+
+    // Extraer fecha de emisión
+    const rFecha = /Fecha de Emisi[oó]n\s*:\s*(\d{2}\/\d{2}\/\d{4})/i;
+    const mFecha = textoCompleto.match(rFecha);
+    if (mFecha) {
+      const partes = mFecha[1].split('/');
+      document.getElementById('fecha').value = `${partes[2]}-${partes[1]}-${partes[0]}`;
+    }
+
+    // Extraer total
+    const rTotal = /Total\s*:\s*\$\s*([\d.,]+)/i;
+    const mTotal = textoCompleto.match(rTotal);
+    if (mTotal) {
+      document.getElementById('total').value = '$ ' + mTotal[1].trim();
+    }
+
+    // Detectar y preseleccionar equipos
+    const MAPEO_EQUIPOS = [
+      { key: 'radiador_rehau500',       palabras: ['rehau 500', 'radiador rehau', 'elemento de radiador rehau'] },
+      { key: 'radiador_nereus',         palabras: ['nereus'] },
+      { key: 'baxi_luna3',              palabras: ['luna 3', 'luna3', 'luna 3 confort', 'luna3confort'] },
+      { key: 'baxi_eco_nova',           palabras: ['eco nova', 'econova', 'baxi eco'] },
+      { key: 'baxi_luna_duo_tec',       palabras: ['luna duo', 'duo tec', 'duotec'] },
+      { key: 'caldaia_top_s',           palabras: ['caldaia', 'top s'] },
+      { key: 'dd_nepto_atron',          palabras: ['nepto', 'atron'] },
+      { key: 'raubasic',                palabras: ['raubasic'] },
+      { key: 'piso_radiante_rehau',     palabras: ['piso radiante', 'losa radiante'] },
+      { key: 'caldera_electrica_advance', palabras: ['caldera electrica', 'advance'] },
+      { key: 'bowman',                  palabras: ['bowman'] },
+      { key: 'ecopool',                 palabras: ['ecopool'] },
+      { key: 'toallero_kanah',          palabras: ['toallero kanah', 'kanah'] },
+    ];
+
+    const textoLower = textoCompleto.toLowerCase();
+    let equiposDetectados = 0;
+
+    MAPEO_EQUIPOS.forEach(({ key, palabras }) => {
+      const encontrado = palabras.some(p => textoLower.includes(p));
+      if (encontrado) {
+        const cb = document.getElementById('eq_' + key);
+        if (cb) {
+          cb.checked = true;
+          cb.closest('.equipo-item').classList.add('selected');
+          equiposDetectados++;
+        }
+      }
+    });
+
+    const msg = equiposDetectados > 0
+      ? `Datos cargados ✅ — ${equiposDetectados} equipo(s) preseleccionado(s)`
+      : 'Datos cargados ✅ — revisá los equipos manualmente';
+    fileDrop.querySelector('p').textContent = msg;
+    verificarFormulario();
+  } catch(e) {
+    fileDrop.querySelector('p').textContent = 'No se pudieron leer los datos. Completalos manualmente.';
+    console.error(e);
+  }
+}
+
+// Habilitar botón solo si hay PDF y cliente
+['cliente', 'numero', 'direccion', 'fecha', 'total'].forEach(id => {
+  document.getElementById(id).addEventListener('input', verificarFormulario);
+});
+
+function verificarFormulario() {
+  document.getElementById('btn-generar').disabled = (archivoGesdatta === null);
+}
+
+async function generarPDF() {
+  const estado = document.getElementById('estado');
+  const btn = document.getElementById('btn-generar');
+
+  // Validar
+  const file = archivoGesdatta || fileInput.files[0];
+  if (!file) return mostrarEstado('error', '❌ Falta el PDF de Gesdatta.');
+  if (!document.getElementById('cliente').value.trim()) return mostrarEstado('error', '❌ Falta el nombre del cliente.');
+
+  // Equipos seleccionados
+  const equipos = Array.from(document.querySelectorAll('#equipos-grid input[type="checkbox"]:checked'))
+    .map(cb => cb.value);
+
+  // Leer PDF como base64
+  mostrarEstado('loading', 'Generando PDF...');
+  btn.disabled = true;
+
+  try {
+    const b64 = await fileToBase64(file);
+
+    const payload = {
+      gesdatta_pdf_base64: b64,
+      datos_presupuesto: {
+        cliente:            document.getElementById('cliente').value.trim(),
+        numero_presupuesto: document.getElementById('numero').value.trim(),
+        direccion_obra:     document.getElementById('direccion').value.trim(),
+        fecha:              formatFecha(document.getElementById('fecha').value),
+        total:              document.getElementById('total').value.trim(),
+      },
+      equipos_seleccionados: equipos
+    };
+
+    const res = await fetch(BACKEND + '/generar-pdf', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+
+    if (!res.ok) {
+      const err = await res.json();
+      throw new Error(err.error || 'Error desconocido');
+    }
+
+    const blob = await res.blob();
+    const cliente = payload.datos_presupuesto.cliente.replace(/\s+/g,'_').substring(0,30);
+    const nro = payload.datos_presupuesto.numero_presupuesto;
+    let nombre = `Presupuesto_Euler_${cliente}`;
+    if (nro) nombre += `_${nro}`;
+    nombre += '.pdf';
+
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = nombre;
+    a.click();
+    URL.revokeObjectURL(url);
+
+    mostrarEstado('success', `✅ PDF generado: ${nombre}`);
+  } catch(e) {
+    mostrarEstado('error', '❌ Error: ' + e.message);
+  } finally {
+    btn.disabled = false;
+    verificarFormulario();
+  }
+}
+
+function fileToBase64(file) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => resolve(reader.result.split(',')[1]);
+    reader.onerror = reject;
+    reader.readAsDataURL(file);
+  });
+}
+
+function formatFecha(isoDate) {
+  if (!isoDate) return new Date().toLocaleDateString('es-AR');
+  const [y,m,d] = isoDate.split('-');
+  return `${d}/${m}/${y}`;
+}
+
+function mostrarEstado(tipo, msg) {
+  const estado = document.getElementById('estado');
+  estado.className = tipo;
+  if (tipo === 'loading') {
+    estado.innerHTML = `<div class="spinner"></div> ${msg}`;
+  } else {
+    estado.innerHTML = msg;
+  }
+  estado.style.display = 'flex';
+}
+
+// Setear fecha de hoy por defecto
+const hoy = new Date().toISOString().split('T')[0];
+document.getElementById('fecha').value = hoy;
+
+// Cargar catálogo
+cargarCatalogo();
+
+// ── Historial ──────────────────────────────────────────────
+let historialAbierto = false;
+let historialDatos = [];
+
+function toggleHistorial() {
+  historialAbierto = !historialAbierto;
+  const contenido = document.getElementById('historial-contenido');
+  const toggle = document.getElementById('historial-toggle');
+  contenido.style.display = historialAbierto ? 'block' : 'none';
+  toggle.textContent = historialAbierto ? '▲ ocultar' : '▼ ver';
+  if (historialAbierto) cargarHistorial();
+}
+
+async function cargarHistorial() {
+  const lista = document.getElementById('historial-lista');
+  lista.innerHTML = '<span style="color:#888;font-size:0.9rem">Cargando...</span>';
+  try {
+    const res = await fetch(BACKEND + '/historial');
+    historialDatos = await res.json();
+    filtrarHistorial();
+  } catch(e) {
+    lista.innerHTML = '<span style="color:#c0392b;font-size:0.9rem">No se pudo cargar el historial.</span>';
+  }
+}
+
+function filtrarHistorial() {
+  const textoBuscar = (document.getElementById('filtro-cliente').value || '').toLowerCase().trim();
+  const desde = document.getElementById('filtro-desde').value;   // yyyy-mm-dd
+  const hasta = document.getElementById('filtro-hasta').value;
+
+  const resultado = historialDatos.filter(r => {
+    // Filtro por cliente
+    if (textoBuscar && !(r.cliente || '').toLowerCase().includes(textoBuscar)) return false;
+
+    // Convertir fecha del registro "dd/mm/yyyy HH:MM" → yyyy-mm-dd para comparar
+    const partes = (r.fecha || '').split(' ')[0].split('/');
+    const fechaReg = partes.length === 3 ? `${partes[2]}-${partes[1]}-${partes[0]}` : '';
+
+    if (desde && fechaReg && fechaReg < desde) return false;
+    if (hasta && fechaReg && fechaReg > hasta) return false;
+
+    return true;
+  });
+
+  renderHistorial(resultado);
+}
+
+function renderHistorial(datos) {
+  const lista = document.getElementById('historial-lista');
+  const contador = document.getElementById('historial-contador');
+
+  if (!historialDatos.length) {
+    contador.textContent = '';
+    lista.innerHTML = '<span style="color:#888;font-size:0.9rem">Todavía no hay presupuestos generados.</span>';
+    return;
+  }
+
+  contador.textContent = datos.length === historialDatos.length
+    ? `${datos.length} de ${historialDatos.length} presupuesto(s)`
+    : 'Sin resultados';
+
+  if (!datos.length) {
+    lista.innerHTML = '<span style="color:#888;font-size:0.9rem">No hay resultados para esta búsqueda.</span>';
+    return;
+  }
+
+  lista.innerHTML = datos.map(r => {
+    const equiposList = (r.equipos || []).slice(0,3).join(', ') + (r.equipos && r.equipos.length > 3 ? '...' : '');
+    return `<div class="historial-item">
+      <div class="historial-info">
+        <div class="historial-cliente">${r.cliente || 'Sin nombre'}  —  Nº ${r.numero || '--'}</div>
+        <div class="historial-detalle">${r.fecha}${r.total ? '  |  ' + r.total : ''}${equiposList ? '  |  ' + equiposList : ''}</div>
+      </div>
+      <button class="btn-descargar" onclick="descargarHistorial('${r.id}')">📧 Descargar</button>
+    </div>`;
+  }).join('');
+}
+
+function limpiarFiltros() {
+  document.getElementById('filtro-cliente').value = '';
+  document.getElementById('filtro-desde').value = '';
+  document.getElementById('filtro-hasta').value = '';
+  filtrarHistorial();
+}
+
+function descargarHistorial(id) {
+  window.location.href = BACKEND + '/historial/' + id;
+}
+</script>
+</body>
+</html>
