@@ -49,7 +49,7 @@ W, H = A4  # 595.27 x 841.89 pts
 
 # ─── Carpeta de folletos originales ───────────────────────────────────────────
 _LOCAL_FOLLETOS = r"G:\Mi unidad\1 - EULER CALEFACCION\14 - PROCESOS Y CALIDAD\FOLLETOS Y NOTAS PRESUPUESTOS"
-_CLOUD_FOLLETOS = os.path.join(os.path.dirname(os.path.abspath(__file__)), "folletos")
+_CLOUD_FOLLETOS = os.path.dirname(os.path.abspath(__file__))
 FOLLETOS_DIR = _LOCAL_FOLLETOS if os.path.exists(_LOCAL_FOLLETOS) else _CLOUD_FOLLETOS
 
 PORTADA_ARCHIVO = "PORTADA_ANTEPROYECTO_v3.pdf"
