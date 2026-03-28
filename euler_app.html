@@ -433,8 +433,9 @@ async function extraerDatosGesdatta(file) {
     }
 
     // Extraer domicilio del cliente (el que está cerca de IVA)
-    const rDir = /Domicilio\s*:\s+(.+?)\s{2,}IVA/i;
-    const mDir = textoCompleto.match(rDir);
+    const rDirAll = /Domicilio\s*:\s+(.+?)\s{2,}IVA/gi;
+    const allDirMatches = [...textoCompleto.matchAll(rDirAll)];
+    const mDir = allDirMatches.length > 0 ? allDirMatches[allDirMatches.length - 1] : null;
     if (mDir) {
       document.getElementById('direccion').value = mDir[1].trim();
     }
