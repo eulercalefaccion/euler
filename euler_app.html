@@ -432,12 +432,16 @@ async function extraerDatosGesdatta(file) {
       document.getElementById('numero').value = mNumero[1].trim();
     }
 
-    // Extraer domicilio del cliente (el que está cerca de IVA)
-    const rDirAll = /Domicilio\s*:\s+(.+?)\s{2,}IVA/gi;
-    const allDirMatches = [...textoCompleto.matchAll(rDirAll)];
-    const mDir = allDirMatches.length > 0 ? allDirMatches[allDirMatches.length - 1] : null;
-    if (mDir) {
-      document.getElementById('direccion').value = mDir[1].trim();
+    // Extraer domicilio del cliente: dividir en todas las ocurrencias de "Domicilio :"
+    // y tomar la ultima seccion (que corresponde al cliente, no a Euler)
+    const domSecciones = textoCompleto.split(/Domicilio\s*:\s*/i);
+    if (domSecciones.length >= 2) {
+      const seccionCliente = domSecciones[domSecciones.length - 1];
+      const addrMatch = seccionCliente.match(/^(.+?)(?:\s{2,}|\s+(?:CUIT|IVA|Telefono|Email)\b)/i);
+      const dirCliente = addrMatch ? addrMatch[1].trim() : seccionCliente.split(/\s{2,}/)[0].trim();
+      if (dirCliente) {
+        document.getElementById('direccion').value = dirCliente;
+      }
     }
 
     // Extraer fecha de emisión
