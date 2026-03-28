@@ -433,7 +433,7 @@ async function extraerDatosGesdatta(file) {
     }
 
     // Extraer domicilio del cliente (el que está cerca de IVA)
-    const rDir = /Domicilio\s*:\s+([A-ZÁÉÍÓÚÑ][^I]+?)\s+IVA/i;
+    const rDir = /Domicilio\s*:\s+(.+?)\s{2,}IVA/i;
     const mDir = textoCompleto.match(rDir);
     if (mDir) {
       document.getElementById('direccion').value = mDir[1].trim();
@@ -605,7 +605,8 @@ document.getElementById('fecha').value = hoy;
 // Cargar catálogo
 cargarCatalogo();
 
-// ── Historial ──────────────────────────────────────────────
+// ── Historial ─────────
+��────────────────────────────────────
 let historialAbierto = false;
 let historialDatos = [];
 
@@ -663,24 +664,25 @@ function renderHistorial(datos) {
   }
 
   contador.textContent = datos.length === historialDatos.length
-    ? `${datos.length} de ${historialDatos.length} presupuesto(s)`
-    : 'Sin resultados';
+    ? `${datos.length} presupuesto(s) en total`
+    : `${datos.length} de ${historialDatos.length} presupuesto(s)`;
 
   if (!datos.length) {
-    lista.innerHTML = '<span style="color:#888;font-size:0.9rem">No hay resultados para esta búsqueda.</span>';
+    lista.innerHTML = '<span style="color:#888;font-size:0.9rem">No hay resultados para los filtros aplicados.</span>';
     return;
   }
 
-  lista.innerHTML = datos.map(r => {
-    const equiposList = (r.equipos || []).slice(0,3).join(', ') + (r.equipos && r.equipos.length > 3 ? '...' : '');
-    return `<div class="historial-item">
+  lista.innerHTML = datos.map(r => `
+    <div class="historial-item">
       <div class="historial-info">
-        <div class="historial-cliente">${r.cliente || 'Sin nombre'}  —  Nº ${r.numero || '--'}</div>
-        <div class="historial-detalle">${r.fecha}${r.total ? '  |  ' + r.total : ''}${equiposList ? '  |  ' + equiposList : ''}</div>
+        <div class="historial-cliente">${r.cliente || '—'}</div>
+        <div class="historial-detalle">
+          N° ${r.numero || '—'} &nbsp;·&nbsp; ${r.fecha} &nbsp;·&nbsp; <strong>${r.total || ''}</strong>
+        </div>
       </div>
-      <button class="btn-descargar" onclick="descargarHistorial('${r.id}')">📧 Descargar</button>
-    </div>`;
-  }).join('');
+      <button class="btn-descargar" onclick="descargarHistorial('${r.id}')">⬇ Descargar</button>
+    </div>
+  `).join('');
 }
 
 function limpiarFiltros() {
