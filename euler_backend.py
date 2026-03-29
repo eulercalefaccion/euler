@@ -562,6 +562,9 @@ MAPEO_FOLLETOS = {
     "bowman":                   "Intercambiador Bowman.pdf",
     "ecopool":                  "Bomba Calor Heatcraft EcoPool.pdf",
     "toallero_kanah":           "Toallero Kanah 800.pdf",
+    "render_piso_radiante":     "Piso Radiante Render.pdf",
+    "estandar_2_calderas":      "Estandar 2 Calderas Separador Hidraulico.pdf",
+    "estandar_1_caldera":       "Estandar 1 Caldera Separador.pdf",
 }
 
 # ─── Catálogo completo de equipos ────────────────────────────────────────────
@@ -884,6 +887,33 @@ CATALOGO = {
         "conexiones": "Incluye: soporte de pared, purgador, tapon y tornillos.",
         "nota": "www.latyn.net",
         "color": "#4A4A0D",
+    },
+    "render_piso_radiante": {
+        "nombre": "Piso Radiante Render",
+        "categoria": "Renders de instalacion",
+        "descripcion": "Render ilustrativo de instalacion de piso radiante REHAU en ambiente residencial.",
+        "specs": [],
+        "conexiones": "",
+        "nota": "",
+        "color": "#1a3a5c",
+    },
+    "estandar_2_calderas": {
+        "nombre": "Estandar 2 Calderas + Separador Hidraulico",
+        "categoria": "Renders de instalacion",
+        "descripcion": "Render ilustrativo de instalacion estandar con 2 calderas murales y separador hidraulico.",
+        "specs": [],
+        "conexiones": "",
+        "nota": "",
+        "color": "#1a3a5c",
+    },
+    "estandar_1_caldera": {
+        "nombre": "Estandar 1 Caldera + Separador",
+        "categoria": "Renders de instalacion",
+        "descripcion": "Render ilustrativo de instalacion estandar con 1 caldera mural y separador hidraulico.",
+        "specs": [],
+        "conexiones": "",
+        "nota": "",
+        "color": "#1a3a5c",
     },
 }
 
