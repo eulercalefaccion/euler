@@ -1174,6 +1174,7 @@ def build_cierre_pdf(datos_presupuesto: dict) -> bytes:
     nombre_style = ParagraphStyle("nombre", fontSize=12, textColor=EULER_DARK,
                                    fontName="Helvetica-Bold", alignment=TA_RIGHT)
     story.append(Paragraph("Ing. Nicolas F. Ayala", nombre_style))
+    story.append(Spacer(1, 6*mm))
     story.append(Paragraph("EULER CALEFACCION POR AGUA", ParagraphStyle(
         "emp", fontSize=10, textColor=EULER_MID, fontName="Helvetica-Bold", alignment=TA_RIGHT)))
     story.append(Paragraph("CEL 3415695849  |  www.euler.com.ar", ParagraphStyle(
