@@ -891,14 +891,14 @@ CONDICIONES = """1) FORMA DE PAGO
 
 Efectivo, transferencia, cheques/echeqs. (consultar por tarjetas de credito).
 
-- Canieria: Al aprobar la oferta.
+- Cañería: Al aprobar la oferta.
 - Equipos: A convenir.
 - Mano de obra de instalacion de equipos: A convenir.
 
 2) PLAZO DE ENTREGA
 
 Provision de equipos: inmediato.
-Canieria: Hasta 15 dias habiles a partir del comienzo del trabajo.
+Cañería: Hasta 15 dias habiles a partir del comienzo del trabajo.
 Instalacion de caldera y radiadores: 3 dias habiles segun tiempos de construccion.
 
 3) NOTAS
@@ -916,10 +916,10 @@ bomba presurizadora.
 d) La instalacion no incluye la instalacion electrica del tomacorriente, necesaria para el
 funcionamiento de la caldera.
 
-e) El presente presupuesto NO incluye ningun trabajo ni material relacionado con la canieria de GAS,
+e) El presente presupuesto NO incluye ningun trabajo ni material relacionado con la cañería de GAS,
 agua fria ni agua caliente sanitaria necesaria y excluyente para el funcionamiento de la caldera.
 
-f) El trabajo de instalacion de canieria incluye el canaleteo de pisos y paredes y se entrega con la
+f) El trabajo de instalacion de cañería incluye el canaleteo de pisos y paredes y se entrega con la
 misma amurada y fijada, quedando a cargo del cliente el posterior tapado de las canaletas.
 
 g) Puesta en marcha inicial (PEMIO): tiene por objetivo probar el sistema, ponerlo a punto, explicar
@@ -1048,7 +1048,7 @@ def build_condiciones_pdf() -> bytes:
     story.append(Paragraph("1) FORMA DE PAGO", sub_style))
     story.append(Paragraph(
         "Efectivo, transferencia, cheques/echeqs. (consultar por tarjetas de credito).", body_style))
-    for item in ["Canieria: Al aprobar la oferta.",
+    for item in ["Cañería: Al aprobar la oferta.",
                  "Equipos: A convenir.",
                  "Mano de obra de instalacion de equipos: A convenir."]:
         story.append(Paragraph(f"<bullet>&mdash;</bullet> {item}", nota_style))
@@ -1057,7 +1057,7 @@ def build_condiciones_pdf() -> bytes:
     # Plazo de entrega
     story.append(Paragraph("2) PLAZO DE ENTREGA", sub_style))
     for item in ["Provision de equipos: inmediato.",
-                 "Canieria: Hasta 15 dias habiles a partir del comienzo del trabajo.",
+                 "Cañería: Hasta 15 dias habiles a partir del comienzo del trabajo.",
                  "Instalacion de caldera y radiadores: 3 dias habiles segun tiempos de construccion."]:
         story.append(Paragraph(f"<bullet>&mdash;</bullet> {item}", nota_style))
     story.append(Spacer(1, 3*mm))
@@ -1069,8 +1069,8 @@ def build_condiciones_pdf() -> bytes:
         ("b)", "Para la instalacion del termostato de ambiente, se debe dejar un cableado desde la caldera hasta la ubicacion del mismo segun instrucciones nuestras."),
         ("c)", "Para el funcionamiento de la caldera se debe dejar una conexion de entrada de agua (a realizar por el cliente segun instrucciones nuestras) y es excluyente que la presion de agua a la entrada sea igual o superior a 1 kg/cm2. De no conseguir dicha presion por altura del tanque, se debe adicionar una bomba presurizadora."),
         ("d)", "La instalacion no incluye la instalacion electrica del tomacorriente, necesaria para el funcionamiento de la caldera."),
-        ("e)", "El presente presupuesto NO incluye ningun trabajo ni material relacionado con la canieria de GAS, agua fria ni agua caliente sanitaria necesaria y excluyente para el funcionamiento de la caldera."),
-        ("f)", "El trabajo de instalacion de canieria incluye el canaleteo de pisos y paredes y se entrega con la misma amurada y fijada, quedando a cargo del cliente el posterior tapado de las canaletas."),
+        ("e)", "El presente presupuesto NO incluye ningun trabajo ni material relacionado con la cañería de GAS, agua fria ni agua caliente sanitaria necesaria y excluyente para el funcionamiento de la caldera."),
+        ("f)", "El trabajo de instalacion de cañería incluye el canaleteo de pisos y paredes y se entrega con la misma amurada y fijada, quedando a cargo del cliente el posterior tapado de las canaletas."),
         ("g)", "Puesta en marcha inicial (PEMIO): tiene por objetivo probar el sistema, ponerlo a punto, explicar el funcionamiento a los propietarios y activar la garantia de los equipos. Se realiza inmediatamente despues de finalizar la instalacion. Para realizarla se debe contar con todos los servicios (energia electrica, gas y agua) y con la presencia de los propietarios o responsables. De no cumplirse alguno de estos requisitos, la PEMIO se realizara en el momento que se cumplan dichos requisitos, con costo a cargo del cliente."),
         ("h)", "Condiciones de garantia: Calderas: 12 meses a partir de la PEMIO. La garantia puede extenderse 12 meses adicionales (logrando 24 meses totales) contratando un servicio de mantenimiento preventivo autorizado. Radiadores: 10 anios a partir de la PEMIO."),
     ]
