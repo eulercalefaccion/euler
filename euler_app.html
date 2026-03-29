@@ -452,11 +452,22 @@ async function extraerDatosGesdatta(file) {
       document.getElementById('fecha').value = `${partes[2]}-${partes[1]}-${partes[0]}`;
     }
 
-    // Extraer total
-    const rTotal = /Total\s*:\s*\$\s*([\d.,]+)/i;
-    const mTotal = textoCompleto.match(rTotal);
-    if (mTotal) {
-      document.getElementById('total').value = '$ ' + mTotal[1].trim();
+    // Extraer total: buscar todos los "Total:" y el monto de IVA
+    // para armar "sin IVA + IVA = con IVA"
+    const allTotales = [...textoCompleto.matchAll(/Total\s*:\s*\$\s*([\d.,]+)/gi)];
+    const mIVAamt = textoCompleto.match(/I\.?V\.?A\.?\s*\d+[\s,]*%?\s*:\s*\$\s*([\d.,]+)/i);
+    if (allTotales.length >= 2) {
+      const sinIVA = '$ ' + allTotales[0][1].trim();
+      const conIVA = '$ ' + allTotales[allTotales.length - 1][1].trim();
+      const ivaStr = mIVAamt ? ' + IVA $ ' + mIVAamt[1].trim() + ' = ' : ' + IVA = ';
+      document.getElementById('total').value = sinIVA + ivaStr + conIVA;
+    } else if (allTotales.length === 1) {
+      const base = '$ ' + allTotales[0][1].trim();
+      if (mIVAamt) {
+        document.getElementById('total').value = base + ' + IVA $ ' + mIVAamt[1].trim();
+      } else {
+        document.getElementById('total').value = base;
+      }
     }
 
     // Detectar y preseleccionar equipos
