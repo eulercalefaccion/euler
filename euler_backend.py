@@ -542,7 +542,7 @@ EULER_LOGO_B64 = (
 )
 
 # ─── Carpeta de folletos originales ───────────────────────────────────────────
-_LOCAL_FOLLETOS = r"G:\Mi unidad\1 - EULER CALEFACCION\14 - PROCESOS Y CALIDAD\FOLLETOS Y NOTAS PRESUPUESTOS"
+_LOCAL_FOLLETOS = r"G:\Mi unidad\1 - EULER CALEFACCIÓN\14 - PROCESOS Y CALIDAD\FOLLETOS Y NOTAS PRESUPUESTOS"
 _CLOUD_FOLLETOS = os.path.dirname(os.path.abspath(__file__))
 FOLLETOS_DIR = _LOCAL_FOLLETOS if os.path.exists(_LOCAL_FOLLETOS) else _CLOUD_FOLLETOS
 
@@ -558,12 +558,12 @@ MAPEO_FOLLETOS = {
     "radiador_nereus":          "Radiador Nereus 500.pdf",
     "raubasic":                 "Sistema RAUBASIC REHAU.pdf",
     "piso_radiante_rehau":      "Piso Radiante REHAU.pdf",
-    "caldera_electrica_advance":"Caldera Electrica Flowing Advance.pdf",
+    "caldera_eléctrica_advance":"Caldera Eléctrica Flowing Advance.pdf",
     "bowman":                   "Intercambiador Bowman.pdf",
     "ecopool":                  "Bomba Calor Heatcraft EcoPool.pdf",
     "toallero_kanah":           "Toallero Kanah 800.pdf",
     "render_piso_radiante":     "Piso Radiante Render.pdf",
-    "estandar_2_calderas":      "Estandar 2 Calderas Separador Hidraulico.pdf",
+    "estandar_2_calderas":      "Estandar 2 Calderas Separador Hidráulico.pdf",
     "estandar_1_caldera":       "Estandar 1 Caldera Separador.pdf",
 }
 
@@ -572,34 +572,34 @@ CATALOGO = {
     "baxi_luna3": {
         "nombre": "Caldera Baxi Luna 3 Confort",
         "categoria": "Caldera mural a gas de alta gama",
-        "descripcion": (
+        "descripción": (
             "Caldera mural a gas de alta performance. Ideal para viviendas de mediana o gran "
-            "superficie. Versiones solo calefaccion y doble servicio. Encendido electronico sin "
-            "piloto. Control digital de ultima generacion que permite operar la caldera a distancia. "
-            "Maximiza el ahorro energetico en conjunto con sistemas de energia solar termica."
+            "superficie. Versiones solo calefacción y doble servicio. Encendido electrónico sin "
+            "piloto. Control digital de última generación que permite operar la caldera a distancia. "
+            "Maximiza el ahorro energético en conjunto con sistemas de energía solar térmica."
         ),
         "specs": [
             ("Capacidad maxima nominal", "25.854 - 32.700 Kcal/h"),
             ("Maxima eficiencia (Dir. 92/42/CEE)", "92%"),
             ("Produccion ACS (Delta t 20°C)", "22 lts/min"),
-            ("Rango temperatura calefaccion", "30 / 85 °C"),
+            ("Rango temperatura calefacción", "30 / 85 °C"),
             ("Rango temperatura ACS", "35 / 60 °C"),
             ("Tipo de ventilacion", "Tiro natural / Tiro forzado balanceado"),
-            ("Diametro salida de humos", "120 mm (tiro natural) / 100 mm coaxial"),
+            ("Diámetro salida de humos", "120 mm (tiro natural) / 100 mm coaxial"),
             ("Peso", "33 - 40 kg"),
             ("Dimensiones (Al x An x Pr)", "763 x 450 x 345 mm"),
-            ("Garantia", "2 anios"),
+            ("Garantía", "2 años"),
         ],
-        "conexiones": "A. Mando Calef. 3/4\" · B. Salida ACS 1/2\" · C. Entrada Gas 3/4\" · D. Entrada Agua 1/2\" · E. Retorno Calef. 3/4\"",
+        "conexiónes": "A. Mando Calef. 3/4\" · B. Salida ACS 1/2\" · C. Entrada Gas 3/4\" · D. Entrada Agua 1/2\" · E. Retorno Calef. 3/4\"",
         "nota": "Representante exclusivo en Argentina: Triangular S.A. | info@triangular.com.ar | triangular.com.ar",
         "color": "#1A4A7A",
     },
     "baxi_eco_nova": {
         "nombre": "Caldera Baxi Eco Nova",
         "categoria": "Caldera mural a gas doble servicio",
-        "descripcion": (
-            "Caldera mural BAXI doble servicio. Brinda calefaccion y agua caliente sanitaria, "
-            "con ventilacion forzada para mayor seguridad. Tecnologia de extensa vida util "
+        "descripción": (
+            "Caldera mural BAXI doble servicio. Brinda calefacción y agua caliente sanitaria, "
+            "con ventilacion forzada para mayor seguridad. Tecnología de extensa vida util "
             "fabricada bajo estrictas normas europeas. Gran rendimiento y flexibilidad por la "
             "modulacion de llama para viviendas pequenias, medianas y de gran superficie."
         ),
@@ -609,26 +609,26 @@ CATALOGO = {
             ("Rendimiento nominal", "90,8%"),
             ("Produccion ACS (Delta t 20°C)", "16 / 20,6 lts/min"),
             ("Rango temperatura ACS", "35 / 60 °C"),
-            ("Rango temperatura calefaccion", "30 / 85 °C"),
-            ("Diametro salida humos coaxial", "60/100 mm"),
-            ("Diametro salida humos tubos separados", "80 mm"),
+            ("Rango temperatura calefacción", "30 / 85 °C"),
+            ("Diámetro salida humos coaxial", "60/100 mm"),
+            ("Diámetro salida humos tubos separados", "80 mm"),
             ("Tipo de ventilacion", "Tiro forzado balanceado"),
             ("Peso equipo vacio", "29 / 35 kg"),
             ("Dimensiones 24F (Al x An x Pr)", "704 x 400 x 295 mm"),
             ("Dimensiones 31F (Al x An x Pr)", "780 x 450 x 340 mm"),
-            ("Garantia", "2 anios"),
+            ("Garantía", "2 años"),
         ],
-        "conexiones": "A. Mando Calef. 3/4\" · B. Salida ACS 1/2\" · C. Entrada Gas 3/4\" · D. Entrada Agua 1/2\" · E. Retorno Calef. 3/4\"",
+        "conexiónes": "A. Mando Calef. 3/4\" · B. Salida ACS 1/2\" · C. Entrada Gas 3/4\" · D. Entrada Agua 1/2\" · E. Retorno Calef. 3/4\"",
         "nota": "Doble intercambiador. Apta para radiadores y piso radiante. Representante exclusivo: Triangular S.A.",
         "color": "#1A4A7A",
     },
     "baxi_luna_duo_tec": {
-        "nombre": "Caldera Baxi Luna Duo Tec E (Condensacion)",
-        "categoria": "Caldera mural a gas de condensacion",
-        "descripcion": (
-            "Caldera mural a gas de condensacion con bomba de circulacion modulante. "
-            "Hasta 40.000 Kcal/h de potencia. Tecnologia de condensacion: al condensar los gases "
-            "de combustion recupera su calor y lo reutiliza, ahorrando hasta 45% de energia "
+        "nombre": "Caldera Baxi Luna Duo Tec E (Condensación)",
+        "categoria": "Caldera mural a gas de condensación",
+        "descripción": (
+            "Caldera mural a gas de condensación con bomba de circulacion modulante. "
+            "Hasta 40.000 Kcal/h de potencia. Tecnología de condensación: al condensar los gases "
+            "de combustion recupera su calor y lo reutiliza, ahorrando hasta 45% de energía "
             "vs. calderas convencionales. Hasta 90% menos de gases de efecto invernadero."
         ),
         "specs": [
@@ -637,25 +637,25 @@ CATALOGO = {
             ("Rendimiento nominal", "105,8%"),
             ("Produccion ACS (Delta t 20°C)", "20,2 - 33,8 lts/min"),
             ("Rango temperatura ACS", "35 - 60 °C"),
-            ("Rango temperatura calefaccion", "25 - 80 °C"),
-            ("Diametro salida humos coaxial", "60/100 mm"),
-            ("Diametro salida humos tubos sep.", "80 mm"),
+            ("Rango temperatura calefacción", "25 - 80 °C"),
+            ("Diámetro salida humos coaxial", "60/100 mm"),
+            ("Diámetro salida humos tubos sep.", "80 mm"),
             ("Tipo ventilacion", "Tiro forzado balanceado"),
             ("Nivel eficiencia energetica", "Clase A*"),
             ("Peso", "34,5 - 41 kg"),
-            ("Garantia", "2 anios"),
+            ("Garantía", "2 años"),
         ],
-        "conexiones": "A-E iguales Luna 3. Adicional: Descarga condensacion 22mm",
-        "nota": "Plug & play: detecta automaticamente el tipo de gas. Representante exclusivo: Triangular S.A.",
+        "conexiónes": "A-E iguales Luna 3. Adicional: Descarga condensación 22mm",
+        "nota": "Plug & play: detecta automáticamente el tipo de gas. Representante exclusivo: Triangular S.A.",
         "color": "#0D5C3A",
     },
     "caldaia_top_s": {
         "nombre": "Caldera Caldaia Digital TOP S",
         "categoria": "Caldera mural a gas digital",
-        "descripcion": (
+        "descripción": (
             "Primera caldera digital de America Latina. Control digital que permite seleccionar "
             "el servicio deseado facilmente, segun las opciones de agua caliente sanitaria o "
-            "calefaccion. Regula las temperaturas del agua de consumo y del circuito de calefaccion "
+            "calefacción. Regula las temperaturas del agua de consumo y del circuito de calefacción "
             "de forma simple y precisa. Sin llama piloto."
         ),
         "specs": [
@@ -665,75 +665,75 @@ CATALOGO = {
             ("Sistema compatible", "Radiador / Fan Coil / Piso Radiante"),
             ("Salida de humos", "Tiro Balanceado Forzado / Tiro Forzado"),
         ],
-        "conexiones": "Altura 77 cm - Ancho 40 cm - Profundidad 34 cm",
-        "nota": "Sin llama piloto. Conexion para sonda anticipadora de piso radiante. Sistema antibloqueo de bomba. Fabricacion argentina. www.caldaia.com.ar",
+        "conexiónes": "Altura 77 cm - Ancho 40 cm - Profundidad 34 cm",
+        "nota": "Sin llama piloto. Conexión para sonda anticipadora de piso radiante. Sistema antibloqueo de bomba. Fabricacion argentina. www.caldaia.com.ar",
         "color": "#1A4A7A",
     },
     "dd_nepto_atron": {
         "nombre": "Caldera DemirDokum / DD Nepto - Atron",
         "categoria": "Caldera residencial a gas",
-        "descripcion": (
+        "descripción": (
             "Calderas residenciales a gas para radiadores o piso radiante. "
-            "Linea CALEFACCION por movimiento de AGUA. Monotermica Doble Servicio (ATRON) y "
-            "Bitermica Doble servicio, Apta CABA (NEPTO). COP 80%/85%. "
+            "Línea CALEFACCIÓN por movimiento de AGUA. Monotérmica Doble Servicio (ATRON) y "
+            "Bitérmica Doble servicio, Apta CABA (NEPTO). COP 80%/85%. "
             "Gas Natural o Comprimido. Procedencia: Turquia - Vaillant Group."
         ),
         "specs": [
             ("Modelos", "Nepto 20 / Atron 24 / Atron 28"),
-            ("Tipo", "Bitermica T. Forzado (Nepto) / Monotermica T. Forzado (Atron)"),
+            ("Tipo", "Bitérmica T. Forzado (Nepto) / Monotérmica T. Forzado (Atron)"),
             ("Capacidad calor", "20.000 / 24.000 / 28.000 W"),
             ("COP", "0,93"),
-            ("Alimentacion", "220-1-50 Hz"),
-            ("Consumo electrico", "95 / 98 / 98 W"),
+            ("Alimentación", "220-1-50 Hz"),
+            ("Consumo eléctrico", "95 / 98 / 98 W"),
             ("Gas", "G20 (Natural) - G31 (Envasado)"),
             ("Caudal ACS (salto 30°C)", "2,5 l/min"),
-            ("Conexiones ACS", "1/2\""),
-            ("Conexiones calefaccion / gas", "3/4\""),
+            ("Conexiónes ACS", "1/2\""),
+            ("Conexiónes calefacción / gas", "3/4\""),
             ("Dimensiones Nepto (An x Al x Pr)", "410 x 700 x 280 mm"),
             ("Dimensiones Atron 24 (An x Al x Pr)", "410 x 700 x 295 mm"),
             ("Dimensiones Atron 28 (An x Al x Pr)", "444 x 700 x 295 mm"),
             ("Peso unidad interior", "30 / 30 / 33 kg"),
         ],
-        "conexiones": "Kit salida de gases metal disponible (cod. 893010). Cod. ANSAL: 893000 / 893020 / 893025",
+        "conexiónes": "Kit salida de gases metal disponible (cod. 893010). Cod. ANSAL: 893000 / 893020 / 893025",
         "nota": "Distribucion exclusiva Euler. www.euler.com.ar",
         "color": "#1A4A7A",
     },
     "radiador_rehau500": {
         "nombre": "Radiador REHAU 500",
         "categoria": "Radiador bimetalico de aluminio y acero",
-        "descripcion": (
+        "descripción": (
             "Radiador bimetalico con nucleo de acero y revestimiento de aluminio. "
-            "Alta conductividad termica, diseno moderno y amplia durabilidad. "
-            "Apto para instalaciones en hogar, edificios e industrias. "
-            "Certificaciones ISO 9001-14001-EN 442."
+            "Alta conductividad térmica, diseño moderno y amplia durabilidad. "
+            "Apto para instalaciónes en hogar, edificios e industrias. "
+            "Certificaciónes ISO 9001-14001-EN 442."
         ),
         "specs": [
             ("Profundidad", "94 mm"),
             ("Altura", "557 mm"),
             ("Distancia entre ejes", "500 mm"),
             ("Longitud por elemento", "78 mm"),
-            ("Diametro conexiones", "G1 pulgadas"),
+            ("Diámetro conexiónes", "G1 pulgadas"),
             ("Contenido de agua", "0,2 litros/elemento"),
             ("Peso", "1,24 kg/elemento"),
-            ("Potencia termica Delta 30k", "87,5 W/elemento"),
-            ("Potencia termica Delta 50k", "112,5 W/elemento"),
-            ("Potencia termica Delta 70k", "145 W/elemento"),
+            ("Potencia térmica Delta 30k", "87,5 W/elemento"),
+            ("Potencia térmica Delta 50k", "112,5 W/elemento"),
+            ("Potencia térmica Delta 70k", "145 W/elemento"),
             ("Presion de trabajo", "2 MPa"),
             ("Presion maxima de ejercicio", "3 MPa"),
             ("MAT NR SAP", "13743011001"),
             ("ART NR LOGIC", "374301-001"),
         ],
-        "conexiones": "REHAU S.A. - Cuyo 1900, Martinez, Pcia. de Buenos Aires. Tel: +54 11 4898-6000",
+        "conexiónes": "REHAU S.A. - Cuyo 1900, Martinez, Pcia. de Buenos Aires. Tel: +54 11 4898-6000",
         "nota": "Facil limpieza y mantenimiento. Amplia durabilidad. www.rehau.com.ar",
         "color": "#7A3A0D",
     },
     "radiador_nereus": {
         "nombre": "Radiador Bimetalico Nereus 500",
-        "categoria": "Radiador bimetalico - Diseno italiano",
-        "descripcion": (
+        "categoria": "Radiador bimetalico - Diseño italiano",
+        "descripción": (
             "Radiador bimetalico Nereus 500. Composicion 56% Acero + 44% Aluminio. "
-            "Pintado por electroforesis (E-coating) para maxima proteccion contra la corrosion. "
-            "Diseno Italiano. Apto para instalaciones en hogar, edificios e industrias. "
+            "Pintado por electroforesis (E-coating) para maxima protección contra la corrosion. "
+            "Diseño Italiano. Apto para instalaciónes en hogar, edificios e industrias. "
             "Disponible de 2 a 12 secciones."
         ),
         "specs": [
@@ -744,68 +744,68 @@ CATALOGO = {
             ("Dimensiones por seccion", "560 x 78 x 80 mm"),
             ("Distancia entre ejes", "500 mm"),
             ("Contenido de agua", "0,20 litros/seccion"),
-            ("Potencia termica nominal", "143 W (DeltaT=70°C)"),
+            ("Potencia térmica nominal", "143 W (DeltaT=70°C)"),
             ("Working pressure", "2,0 MPa"),
             ("Testing pressure", "3,0 MPa"),
             ("Peso por seccion", "1,50 kg"),
             ("Disponible en", "2 a 12 secciones"),
-            ("Garantia", "10 anios"),
+            ("Garantía", "10 años"),
         ],
-        "conexiones": "Apto para instalaciones en hogar, edificios e industrias.",
-        "nota": "Diseno italiano. E-coating aumenta la proteccion contra la corrosion.",
+        "conexiónes": "Apto para instalaciónes en hogar, edificios e industrias.",
+        "nota": "Diseño italiano. E-coating aumenta la protección contra la corrosion.",
         "color": "#7A3A0D",
     },
     "raubasic": {
         "nombre": "Sistema RAUBASIC (REHAU)",
-        "categoria": "Sistema de tuberias para instalaciones sanitarias y de calefaccion",
-        "descripcion": (
-            "Sistema de tuberias REHAU para instalaciones sanitarias y de calefaccion. "
+        "categoria": "Sistema de tuberias para instalaciónes sanitarias y de calefacción",
+        "descripción": (
+            "Sistema de tuberias REHAU para instalaciónes sanitarias y de calefacción. "
             "Union por compresion radial: montaje facil, rapido y seguro en 3 pasos: "
             "1. Cortar tubo e insertar casquillo. 2. Insertar accesorio de union. 3. Comprimir casquillo. "
-            "Herramientas RAUTOOL: no precisan calibracion ni mantenimiento."
+            "Herramientas RAUTOOL: no precisan calibración ni mantenimiento."
         ),
         "specs": [
-            ("Diametros disponibles", "16, 20, 25 y 32 mm"),
+            ("Diámetros disponibles", "16, 20, 25 y 32 mm"),
             ("Tipo de union", "Compresion radial (100% resistente a fugas)"),
             ("Herramienta manual RAUTOOL", "Pinzas de union 16, 20 y 25 mm"),
-            ("Herramienta hidraulica manual", "Mordazas de 16, 20, 25 y 32 mm"),
-            ("Aplicacion", "Instalaciones sanitarias y calefaccion"),
+            ("Herramienta hidráulica manual", "Mordazas de 16, 20, 25 y 32 mm"),
+            ("Aplicación", "Instalaciónes sanitarias y calefacción"),
         ],
-        "conexiones": "Componentes del sistema RAUBASIC PEX-a. Sin necesidad de calibracion ni mantenimiento de herramientas.",
+        "conexiónes": "Componentes del sistema RAUBASIC PEX-a. Sin necesidad de calibración ni mantenimiento de herramientas.",
         "nota": "REHAU - Engineering progress / Enhancing lives. www.rehau.com.ar",
         "color": "#2A4A0D",
     },
     "piso_radiante_rehau": {
         "nombre": "Piso Radiante REHAU (PE-RT + Colectores PHKV-D)",
-        "categoria": "Sistema de calefaccion por suelo radiante",
-        "descripcion": (
-            "Sistema de calefaccion por suelo radiante con tuberias PE-RT de alta relacion "
+        "categoria": "Sistema de calefacción por suelo radiante",
+        "descripción": (
+            "Sistema de calefacción por suelo radiante con tuberias PE-RT de alta relacion "
             "precio-calidad, certificado por normas europeas. Colectores polimericos PHKV-D "
-            "fabricados en poliamida reforzada con fibra de vidrio para instalaciones de hasta "
+            "fabricados en poliamida reforzada con fibra de vidrio para instalaciónes de hasta "
             "12 circuitos. Compatible con calderas, bombas de calor y paneles solares."
         ),
         "specs": [
-            ("Tuberia", "PE-RT (Polietileno de alta resistencia termica)"),
-            ("Diametros tubo", "16 y 20 mm"),
-            ("Aplicacion", "Calefaccion por piso radiante exclusivamente"),
-            ("Certificacion", "Normas europeas"),
-            ("Colector modelo", "Linea PHKV-D"),
+            ("Tuberia", "PE-RT (Polietileno de alta resistencia térmica)"),
+            ("Diámetros tubo", "16 y 20 mm"),
+            ("Aplicación", "Calefacción por piso radiante exclusivamente"),
+            ("Certificación", "Normas europeas"),
+            ("Colector modelo", "Línea PHKV-D"),
             ("Material colector", "Poliamida reforzada con fibra de vidrio"),
             ("Caudalimetro", "Grafico (0 a 5 l/min)"),
             ("Rango temperatura", "-10°C a 82°C"),
             ("Rango de salidas", "2 a 12 salidas"),
             ("Automatizable", "Si"),
         ],
-        "conexiones": "Para instalacion de pisos radiantes y refrescantes. Compatible con calderas, bombas de calor y paneles solares.",
+        "conexiónes": "Para instalación de pisos radiantes y refrescantes. Compatible con calderas, bombas de calor y paneles solares.",
         "nota": "REHAU - Engineering progress / Enhancing lives. www.rehau.com.ar",
         "color": "#0D5C5A",
     },
-    "caldera_electrica_advance": {
-        "nombre": "Caldera Electrica Flowing Advance",
-        "categoria": "Caldera electrica mural - Industria Argentina",
-        "descripcion": (
-            "Linea completa de calderas electricas murales FLOWING ADVANCE: modelos SC (solo "
-            "calefaccion), DS (doble servicio: calefaccion y agua caliente) y BT (doble servicio: "
+    "caldera_eléctrica_advance": {
+        "nombre": "Caldera Eléctrica Flowing Advance",
+        "categoria": "Caldera eléctrica mural - Industria Argentina",
+        "descripción": (
+            "Línea completa de calderas eléctricas murales FLOWING ADVANCE: modelos SC (solo "
+            "calefacción), DS (doble servicio: calefacción y agua caliente) y BT (doble servicio: "
             "para trabajar con Boiler). Potencias de 10 a 40 kW. Industria Argentina."
         ),
         "specs": [
@@ -813,105 +813,105 @@ CATALOGO = {
             ("Potencias disponibles", "10 kW (8.600 kcal/h) a 40 kW (34.400 kcal/h)"),
             ("Consumo 3x380V", "15 / 31 / 46 / 60 A"),
             ("Consumo 220V monofasico", "45 A (solo modelo 10kW)"),
-            ("Superficie calefaccion aprox.", "Hasta 110 m2 (10kW) / Hasta 440 m2 (40kW)"),
+            ("Superficie calefacción aprox.", "Hasta 110 m2 (10kW) / Hasta 440 m2 (40kW)"),
             ("Bomba circuladora", "Grundfos UPS 15-60"),
             ("Dimensiones aprox.", "790 x 410 x 320 mm"),
-            ("Garantia", "2 anios"),
+            ("Garantía", "2 años"),
         ],
-        "conexiones": "AC: Alim. Calef. H 3/4\" BSP · HW: Agua Caliente M 1/2\" BSP · CW: Ingreso Agua Fria M 1/2\" BSP · RC: Retorno Calef. H 3/4\" BSP · LL: Llenado H 1/2\" BSP",
-        "nota": "Resistencias blindadas AISI316 intercambiables. Tanque expansion cerrado. Valvula seguridad 3 bar. Industria Argentina. www.flowing.com.ar",
+        "conexiónes": "AC: Alim. Calef. H 3/4\" BSP · HW: Agua Caliente M 1/2\" BSP · CW: Ingreso Agua Fria M 1/2\" BSP · RC: Retorno Calef. H 3/4\" BSP · LL: Llenado H 1/2\" BSP",
+        "nota": "Resistencias blindadas AISI316 intercambiables. Tanque expansion cerrado. Válvula seguridad 3 bar. Industria Argentina. www.flowing.com.ar",
         "color": "#5A1A7A",
     },
     "bowman": {
         "nombre": "Intercambiador de Calor de Piscina Bowman",
-        "categoria": "Intercambiador de calor - 100 anios de tecnologia",
-        "descripcion": (
-            "Intercambiadores de calor para piscinas y spas Bowman. 100 anios de tecnologia "
+        "categoria": "Intercambiador de calor - 100 años de tecnología",
+        "descripción": (
+            "Intercambiadores de calor para piscinas y spas Bowman. 100 años de tecnología "
             "de transferencia de calor. Para calderas, paneles solares y bombas de calor. "
             "Decenas de miles de unidades operando en todo el mundo, desde spas hasta piscinas "
             "olimpicas. Calientan piscinas hasta 3 veces mas rapido que la competencia."
         ),
         "specs": [
             ("Tipos de pila", "Titanio / Acero inoxidable / Cupronicquel"),
-            ("Conexiones", "BSP / PN6 / PN10 / PN16"),
+            ("Conexiónes", "BSP / PN6 / PN10 / PN16"),
             ("Gamas", "EC y FC con cubiertas finales de material compuesto"),
-            ("Garantia pila titanio", "10 anios"),
-            ("Aplicaciones", "Spas, baneras de hidromasaje, piscinas olimpicas"),
+            ("Garantía pila titanio", "10 años"),
+            ("Aplicaciónes", "Spas, baneras de hidromasaje, piscinas olimpicas"),
         ],
-        "conexiones": "Cubiertas de extremo de ajuste universal. Pila y cubiertas desmontables para mantenimiento sencillo.",
-        "nota": "Compatible con energia solar y renovable. Modelos EC y FC disponibles.",
+        "conexiónes": "Cubiertas de extremo de ajuste universal. Pila y cubiertas desmontables para mantenimiento sencillo.",
+        "nota": "Compatible con energía solar y renovable. Modelos EC y FC disponibles.",
         "color": "#4A2A0D",
     },
     "ecopool": {
         "nombre": "Bomba de Calor Heatcraft EcoPool",
         "categoria": "Climatizacion de piscinas - Bomba de calor",
-        "descripcion": (
+        "descripción": (
             "Bombas de Calor EcoPool Heatcraft. Los climatizadores de piscina mas eficientes. "
-            "Conexion WiFi integrada para control desde smartphone. Gas ecologico R-410A. "
+            "Conexión WiFi integrada para control desde smartphone. Gas ecologico R-410A. "
             "Versiones frio-calor y calor solamente. Ahorra hasta 50% vs. climatizador a gas. "
             "Funciona en todas las estaciones, incluso en dias nublados."
         ),
         "specs": [
             ("Modelos", "EP-30M / 50M / 75M / 75T / 110T / 150T / 220T"),
-            ("Potencia calorica (Aire 26°C / Agua 26°C)", "7.000 - 43.000 Kcal/h"),
-            ("Alimentacion", "Monofasica 220V (30M/50M/75M) / Trifasica 380V (75T-220T)"),
-            ("Rango temp. operacion aire", "-10°C a 43°C"),
-            ("Rango temp. operacion agua", "15°C a 40°C"),
+            ("Potencia calórica (Aire 26°C / Agua 26°C)", "7.000 - 43.000 Kcal/h"),
+            ("Alimentación", "Monofasica 220V (30M/50M/75M) / Trifasica 380V (75T-220T)"),
+            ("Rango temp. operación aire", "-10°C a 43°C"),
+            ("Rango temp. operación agua", "15°C a 40°C"),
             ("Intercambiador", "Titanio"),
             ("Ruido a 1m", "36 - 52 dB"),
             ("Piscina max. verano EP-30M", "20 m2 / 30 m3"),
             ("Piscina max. verano EP-220T", "150 m2 / 225 m3"),
-            ("Garantia", "2 anios"),
+            ("Garantía", "2 años"),
         ],
-        "conexiones": "Perdida de carga: 1,1 mCA. Geoterm S.A. - San Andres, Pcia. Buenos Aires. Tel: (5411) 4753-3265",
-        "nota": "Compresor Toshiba Gmcc / Samsung / Copeland / Danfoss / Panasonic. 2 anios de garantia.",
+        "conexiónes": "Pérdida de carga: 1,1 mCA. Geoterm S.A. - San Andres, Pcia. Buenos Aires. Tel: (5411) 4753-3265",
+        "nota": "Compresor Toshiba Gmcc / Samsung / Copeland / Danfoss / Panasonic. 2 años de garantía.",
         "color": "#0D3A7A",
     },
     "toallero_kanah": {
         "nombre": "Toallero Kanah 800 (Latyn Clima)",
-        "categoria": "Toallero de acero - Calefaccion de bano",
-        "descripcion": (
+        "categoria": "Toallero de acero - Calefacción de bano",
+        "descripción": (
             "Toallero de acero Kanah 800 marca LatynClima. Transmitimos calidez, creamos momentos. "
             "Incluye soporte de pared, purgador, tapon y tornillos. "
-            "Certificado Resolucion 599-E/2017. Normas ISO 14001:2004 / ISO 9001:2008."
+            "Certificado Resolución 599-E/2017. Normas ISO 14001:2004 / ISO 9001:2008."
         ),
         "specs": [
             ("Modelo", "Kanah 800"),
             ("Material", "Acero"),
             ("Dimensiones (Al x An x Tubo)", "800 x 500 x 18 mm"),
             ("Peso", "7,18 kg"),
-            ("Emision termica Kanah 800 (T=50°C)", "358 W"),
-            ("Emision termica Kanah 1200 (T=50°C)", "515 W"),
-            ("Certificacion", "ISO 14001:2004 / ISO 9001:2008 / Res. 599-E/2017"),
+            ("Emisión térmica Kanah 800 (T=50°C)", "358 W"),
+            ("Emisión térmica Kanah 1200 (T=50°C)", "515 W"),
+            ("Certificación", "ISO 14001:2004 / ISO 9001:2008 / Res. 599-E/2017"),
         ],
-        "conexiones": "Incluye: soporte de pared, purgador, tapon y tornillos.",
+        "conexiónes": "Incluye: soporte de pared, purgador, tapon y tornillos.",
         "nota": "www.latyn.net",
         "color": "#4A4A0D",
     },
     "render_piso_radiante": {
         "nombre": "Piso Radiante Render",
-        "categoria": "Renders de instalacion",
-        "descripcion": "Render ilustrativo de instalacion de piso radiante REHAU en ambiente residencial.",
+        "categoria": "Renders de instalación",
+        "descripción": "Render ilustrativo de instalación de piso radiante REHAU en ambiente residencial.",
         "specs": [],
-        "conexiones": "",
+        "conexiónes": "",
         "nota": "",
         "color": "#1a3a5c",
     },
     "estandar_2_calderas": {
-        "nombre": "Estandar 2 Calderas + Separador Hidraulico",
-        "categoria": "Renders de instalacion",
-        "descripcion": "Render ilustrativo de instalacion estandar con 2 calderas murales y separador hidraulico.",
+        "nombre": "Estandar 2 Calderas + Separador Hidráulico",
+        "categoria": "Renders de instalación",
+        "descripción": "Render ilustrativo de instalación estandar con 2 calderas murales y separador hidráulico.",
         "specs": [],
-        "conexiones": "",
+        "conexiónes": "",
         "nota": "",
         "color": "#1a3a5c",
     },
     "estandar_1_caldera": {
         "nombre": "Estandar 1 Caldera + Separador",
-        "categoria": "Renders de instalacion",
-        "descripcion": "Render ilustrativo de instalacion estandar con 1 caldera mural y separador hidraulico.",
+        "categoria": "Renders de instalación",
+        "descripción": "Render ilustrativo de instalación estandar con 1 caldera mural y separador hidráulico.",
         "specs": [],
-        "conexiones": "",
+        "conexiónes": "",
         "nota": "",
         "color": "#1a3a5c",
     },
@@ -923,45 +923,45 @@ Efectivo, transferencia, cheques/echeqs. (consultar por tarjetas de credito).
 
 - Cañería: Al aprobar la oferta.
 - Equipos: A convenir.
-- Mano de obra de instalacion de equipos: A convenir.
+- Mano de obra de instalación de equipos: A convenir.
 
 2) PLAZO DE ENTREGA
 
 Provision de equipos: inmediato.
-Cañería: Hasta 15 dias habiles a partir del comienzo del trabajo.
-Instalacion de caldera y radiadores: 3 dias habiles segun tiempos de construccion.
+Cañería: Hasta 15 días hábiles a partir del comienzo del trabajo.
+Instalación de caldera y radiadores: 3 días hábiles segun tiempos de construcción.
 
 3) NOTAS
 
-a) El presente presupuesto tiene validez de 10 dias habiles a partir de la fecha de confeccionado.
+a) El presente presupuesto tiene validez de 10 días hábiles a partir de la fecha de confeccionado.
 
-b) Para la instalacion del termostato de ambiente, se debe dejar un cableado desde la caldera hasta
+b) Para la instalación del termostato de ambiente, se debe dejar un cableado desde la caldera hasta
 la ubicacion del mismo segun instrucciones nuestras.
 
-c) Para el funcionamiento de la caldera se debe dejar una conexion de entrada de agua (a realizar por
+c) Para el funcionamiento de la caldera se debe dejar una conexión de entrada de agua (a realizar por
 el cliente segun instrucciones nuestras) y es excluyente que la presion de agua a la entrada sea igual
 o superior a 1 kg/cm2. De no conseguir dicha presion por altura del tanque, se debe adicionar una
 bomba presurizadora.
 
-d) La instalacion no incluye la instalacion electrica del tomacorriente, necesaria para el
+d) La instalación no incluye la instalación eléctrica del tomacorriente, necesaria para el
 funcionamiento de la caldera.
 
 e) El presente presupuesto NO incluye ningun trabajo ni material relacionado con la cañería de GAS,
 agua fria ni agua caliente sanitaria necesaria y excluyente para el funcionamiento de la caldera.
 
-f) El trabajo de instalacion de cañería incluye el canaleteo de pisos y paredes y se entrega con la
+f) El trabajo de instalación de cañería incluye el canaleteo de pisos y paredes y se entrega con la
 misma amurada y fijada, quedando a cargo del cliente el posterior tapado de las canaletas.
 
 g) Puesta en marcha inicial (PEMIO): tiene por objetivo probar el sistema, ponerlo a punto, explicar
-el funcionamiento a los propietarios y activar la garantia de los equipos. Se realiza inmediatamente
-despues de finalizar la instalacion. Para realizarla se debe contar con todos los servicios (energia
-electrica, gas y agua) y con la presencia de los propietarios o responsables. De no cumplirse alguno
+el funcionamiento a los propietarios y activar la garantía de los equipos. Se realiza inmediatamente
+despues de finalizar la instalación. Para realizarla se debe contar con todos los servicios (energía
+eléctrica, gas y agua) y con la presencia de los propietarios o responsables. De no cumplirse alguno
 de estos requisitos, la PEMIO se realizara en el momento que se cumplan dichos requisitos, con costo
 a cargo del cliente.
 
-h) Condiciones de garantia: Calderas: 12 meses a partir de la PEMIO. La garantia puede extenderse
+h) Condiciones de garantía: Calderas: 12 meses a partir de la PEMIO. La garantía puede extenderse
 12 meses adicionales (logrando 24 meses totales) contratando un servicio de mantenimiento preventivo
-autorizado. Radiadores: 10 anios a partir de la PEMIO."""
+autorizado. Radiadores: 10 años a partir de la PEMIO."""
 
 
 # ─── PDF Generator ────────────────────────────────────────────────────────────
@@ -1008,7 +1008,7 @@ def build_portada_pdf(datos_presupuesto: dict) -> bytes:
     # Título del documento
     c.setFont("Helvetica-Bold", 14)
     c.setFillColor(WHITE)
-    c.drawCentredString(W/2, H/2 + 30, "PRESUPUESTO DE CALEFACCION POR AGUA")
+    c.drawCentredString(W/2, H/2 + 30, "PRESUPUESTO DE CALEFACCIÓN POR AGUA")
 
     # Datos del presupuesto
     c.setFont("Helvetica", 11)
@@ -1064,7 +1064,7 @@ def build_condiciones_pdf() -> bytes:
     # Título
     title_style = ParagraphStyle("title", fontSize=16, textColor=EULER_DARK,
                                   fontName="Helvetica-Bold", spaceAfter=4*mm)
-    story.append(Paragraph("EULER — Calefaccion por Agua", title_style))
+    story.append(Paragraph("EULER — Calefacción por Agua", title_style))
     story.append(HRFlowable(width="100%", thickness=2, color=EULER_ACCENT, spaceAfter=6*mm))
 
     sub_style = ParagraphStyle("sub", fontSize=13, textColor=EULER_MID,
@@ -1080,29 +1080,29 @@ def build_condiciones_pdf() -> bytes:
         "Efectivo, transferencia, cheques/echeqs. (consultar por tarjetas de credito).", body_style))
     for item in ["Cañería: Al aprobar la oferta.",
                  "Equipos: A convenir.",
-                 "Mano de obra de instalacion de equipos: A convenir."]:
+                 "Mano de obra de instalación de equipos: A convenir."]:
         story.append(Paragraph(f"<bullet>&mdash;</bullet> {item}", nota_style))
     story.append(Spacer(1, 3*mm))
 
     # Plazo de entrega
     story.append(Paragraph("2) PLAZO DE ENTREGA", sub_style))
     for item in ["Provision de equipos: inmediato.",
-                 "Cañería: Hasta 15 dias habiles a partir del comienzo del trabajo.",
-                 "Instalacion de caldera y radiadores: 3 dias habiles segun tiempos de construccion."]:
+                 "Cañería: Hasta 15 días hábiles a partir del comienzo del trabajo.",
+                 "Instalación de caldera y radiadores: 3 días hábiles segun tiempos de construcción."]:
         story.append(Paragraph(f"<bullet>&mdash;</bullet> {item}", nota_style))
     story.append(Spacer(1, 3*mm))
 
     # Notas
     story.append(Paragraph("3) NOTAS", sub_style))
     notas = [
-        ("a)", "El presente presupuesto tiene validez de 10 dias habiles a partir de la fecha de confeccionado."),
-        ("b)", "Para la instalacion del termostato de ambiente, se debe dejar un cableado desde la caldera hasta la ubicacion del mismo segun instrucciones nuestras."),
-        ("c)", "Para el funcionamiento de la caldera se debe dejar una conexion de entrada de agua (a realizar por el cliente segun instrucciones nuestras) y es excluyente que la presion de agua a la entrada sea igual o superior a 1 kg/cm2. De no conseguir dicha presion por altura del tanque, se debe adicionar una bomba presurizadora."),
-        ("d)", "La instalacion no incluye la instalacion electrica del tomacorriente, necesaria para el funcionamiento de la caldera."),
+        ("a)", "El presente presupuesto tiene validez de 10 días hábiles a partir de la fecha de confeccionado."),
+        ("b)", "Para la instalación del termostato de ambiente, se debe dejar un cableado desde la caldera hasta la ubicacion del mismo segun instrucciones nuestras."),
+        ("c)", "Para el funcionamiento de la caldera se debe dejar una conexión de entrada de agua (a realizar por el cliente segun instrucciones nuestras) y es excluyente que la presion de agua a la entrada sea igual o superior a 1 kg/cm2. De no conseguir dicha presion por altura del tanque, se debe adicionar una bomba presurizadora."),
+        ("d)", "La instalación no incluye la instalación eléctrica del tomacorriente, necesaria para el funcionamiento de la caldera."),
         ("e)", "El presente presupuesto NO incluye ningun trabajo ni material relacionado con la cañería de GAS, agua fria ni agua caliente sanitaria necesaria y excluyente para el funcionamiento de la caldera."),
-        ("f)", "El trabajo de instalacion de cañería incluye el canaleteo de pisos y paredes y se entrega con la misma amurada y fijada, quedando a cargo del cliente el posterior tapado de las canaletas."),
-        ("g)", "Puesta en marcha inicial (PEMIO): tiene por objetivo probar el sistema, ponerlo a punto, explicar el funcionamiento a los propietarios y activar la garantia de los equipos. Se realiza inmediatamente despues de finalizar la instalacion. Para realizarla se debe contar con todos los servicios (energia electrica, gas y agua) y con la presencia de los propietarios o responsables. De no cumplirse alguno de estos requisitos, la PEMIO se realizara en el momento que se cumplan dichos requisitos, con costo a cargo del cliente."),
-        ("h)", "Condiciones de garantia: Calderas: 12 meses a partir de la PEMIO. La garantia puede extenderse 12 meses adicionales (logrando 24 meses totales) contratando un servicio de mantenimiento preventivo autorizado. Radiadores: 10 anios a partir de la PEMIO."),
+        ("f)", "El trabajo de instalación de cañería incluye el canaleteo de pisos y paredes y se entrega con la misma amurada y fijada, quedando a cargo del cliente el posterior tapado de las canaletas."),
+        ("g)", "Puesta en marcha inicial (PEMIO): tiene por objetivo probar el sistema, ponerlo a punto, explicar el funcionamiento a los propietarios y activar la garantía de los equipos. Se realiza inmediatamente despues de finalizar la instalación. Para realizarla se debe contar con todos los servicios (energía eléctrica, gas y agua) y con la presencia de los propietarios o responsables. De no cumplirse alguno de estos requisitos, la PEMIO se realizara en el momento que se cumplan dichos requisitos, con costo a cargo del cliente."),
+        ("h)", "Condiciones de garantía: Calderas: 12 meses a partir de la PEMIO. La garantía puede extenderse 12 meses adicionales (logrando 24 meses totales) contratando un servicio de mantenimiento preventivo autorizado. Radiadores: 10 años a partir de la PEMIO."),
     ]
     nota_label_style = ParagraphStyle("notalabel", fontSize=10, textColor=EULER_DARK,
                                        fontName="Helvetica-Bold")
@@ -1137,7 +1137,7 @@ def build_cierre_pdf(datos_presupuesto: dict) -> bytes:
 
     title_style = ParagraphStyle("title", fontSize=16, textColor=EULER_DARK,
                                   fontName="Helvetica-Bold", spaceAfter=4*mm)
-    story.append(Paragraph("EULER — Garantias y Cierre", title_style))
+    story.append(Paragraph("EULER — Garantías y Cierre", title_style))
     story.append(HRFlowable(width="100%", thickness=2, color=EULER_ACCENT, spaceAfter=6*mm))
 
     sub_style = ParagraphStyle("sub", fontSize=12, textColor=EULER_MID,
@@ -1146,13 +1146,13 @@ def build_cierre_pdf(datos_presupuesto: dict) -> bytes:
                                  fontName="Helvetica", leading=16)
 
     # Garantías
-    story.append(Paragraph("GARANTIAS", sub_style))
-    garantias = [
-        ("Calderas:", "12 meses de garantia a partir de la puesta en marcha inicial obligatoria (PEMIO). Extendible a 24 meses totales contratando servicio de mantenimiento preventivo autorizado."),
-        ("Radiadores:", "10 anios de garantia a partir de la PEMIO."),
-        ("Instalacion:", "Euler garantiza la correcta ejecucion de los trabajos. Cualquier inconveniente derivado de la instalacion sera atendido sin cargo durante el periodo de garantia."),
+    story.append(Paragraph("GARANTÍAS", sub_style))
+    garantías = [
+        ("Calderas:", "12 meses de garantía a partir de la puesta en marcha inicial obligatoria (PEMIO). Extendible a 24 meses totales contratando servicio de mantenimiento preventivo autorizado."),
+        ("Radiadores:", "10 años de garantía a partir de la PEMIO."),
+        ("Instalación:", "Euler garantiza la correcta ejecución de los trabajos. Cualquier inconveniente derivado de la instalación sera atendido sin cargo durante el periodo de garantía."),
     ]
-    for titulo, texto in garantias:
+    for titulo, texto in garantías:
         t_style = ParagraphStyle("gt", fontSize=10, textColor=EULER_DARK,
                                   fontName="Helvetica-Bold", spaceBefore=4*mm)
         story.append(Paragraph(titulo, t_style))
@@ -1198,14 +1198,14 @@ def build_cierre_pdf(datos_presupuesto: dict) -> bytes:
 
     firma_style = ParagraphStyle("firma", fontSize=10, textColor=GRAY_TEXT,
                                   fontName="Helvetica", alignment=TA_RIGHT, leading=18)
-    story.append(Paragraph("Sin mas, saluda Atte.", firma_style))
+    story.append(Paragraph("Sin más, saluda Atte.", firma_style))
     story.append(Spacer(1, 4*mm))
 
     nombre_style = ParagraphStyle("nombre", fontSize=12, textColor=EULER_DARK,
                                    fontName="Helvetica-Bold", alignment=TA_RIGHT)
     story.append(Paragraph("Ing. Nicolas F. Ayala", nombre_style))
     story.append(Spacer(1, 6*mm))
-    story.append(Paragraph("EULER CALEFACCION POR AGUA", ParagraphStyle(
+    story.append(Paragraph("EULER CALEFACCIÓN POR AGUA", ParagraphStyle(
         "emp", fontSize=10, textColor=EULER_MID, fontName="Helvetica-Bold", alignment=TA_RIGHT)))
     story.append(Paragraph("CEL 3415695849  |  www.euler.com.ar", ParagraphStyle(
         "contact", fontSize=9, textColor=GRAY_TEXT, fontName="Helvetica", alignment=TA_RIGHT)))
@@ -1252,16 +1252,16 @@ def build_ficha_pdf(equipo_key: str) -> bytes:
     # Encabezado Euler pequeño
     euler_style = ParagraphStyle("euler_hdr", fontSize=8, textColor=colors.HexColor("#888888"),
                                   alignment=TA_RIGHT, fontName="Helvetica-Oblique")
-    story.append(Paragraph("EULER Calefaccion por Agua  |  www.euler.com.ar", euler_style))
+    story.append(Paragraph("EULER Calefacción por Agua  |  www.euler.com.ar", euler_style))
     story.append(Spacer(1, 3*mm))
 
     # Descripción
     desc_style = ParagraphStyle("desc", fontSize=10, textColor=GRAY_TEXT,
                                  fontName="Helvetica", leading=16, spaceAfter=5*mm)
-    story.append(Paragraph(equipo["descripcion"], desc_style))
+    story.append(Paragraph(equipo["descripción"], desc_style))
     story.append(HRFlowable(width="100%", thickness=1, color=header_color, spaceAfter=4*mm))
 
-    # Tabla de especificaciones
+    # Tabla de especificaciónes
     spec_title = ParagraphStyle("stitle", fontSize=11, textColor=EULER_DARK,
                                  fontName="Helvetica-Bold", spaceBefore=3*mm, spaceAfter=3*mm)
     story.append(Paragraph("ESPECIFICACIONES TECNICAS", spec_title))
@@ -1306,15 +1306,15 @@ def build_ficha_pdf(equipo_key: str) -> bytes:
         story.append(spec_table)
         story.append(Spacer(1, 4*mm))
 
-    # Conexiones
-    if equipo.get("conexiones"):
+    # Conexiónes
+    if equipo.get("conexiónes"):
         conn_title = ParagraphStyle("ctitle", fontSize=10, textColor=EULER_DARK,
                                      fontName="Helvetica-Bold", spaceBefore=3*mm, spaceAfter=2*mm)
         story.append(Paragraph("CONEXIONES / REFERENCIA", conn_title))
         conn_style = ParagraphStyle("conn", fontSize=9, textColor=GRAY_TEXT,
                                      fontName="Helvetica", leading=14,
                                      borderPad=6, backColor=GRAY_LIGHT)
-        story.append(Paragraph(equipo["conexiones"], conn_style))
+        story.append(Paragraph(equipo["conexiónes"], conn_style))
         story.append(Spacer(1, 3*mm))
 
     # Nota / Info adicional
