@@ -1051,7 +1051,7 @@ def build_condiciones_pdf() -> bytes:
     doc = SimpleDocTemplate(
         buf, pagesize=A4,
         leftMargin=2*cm, rightMargin=2*cm,
-        topMargin=2.2*cm, bottomMargin=2*cm
+        topMargin=1.8*cm, bottomMargin=1.5*cm
     )
 
     styles = getSampleStyleSheet()
