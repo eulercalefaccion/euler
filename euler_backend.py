@@ -935,31 +935,33 @@ Instalación de caldera y radiadores: 3 días hábiles segun tiempos de construc
 
 a) El presente presupuesto tiene validez de 10 días hábiles a partir de la fecha de confeccionado.
 
-b) Para la instalación del termostato de ambiente, se debe dejar un cableado desde la caldera hasta
+b) Los valores están expresados en pesos argentinos, calculados según el dólar oficial BNA (tipo vendedor) al día de emisión de éste presupuesto, éstos valores se actualizarán según la cotización vigente al momento del pago o avance de obra.
+
+c) Para la instalación del termostato de ambiente, se debe dejar un cableado desde la caldera hasta
 la ubicacion del mismo segun instrucciones nuestras.
 
-c) Para el funcionamiento de la caldera se debe dejar una conexión de entrada de agua (a realizar por
+d) Para el funcionamiento de la caldera se debe dejar una conexión de entrada de agua (a realizar por
 el cliente segun instrucciones nuestras) y es excluyente que la presion de agua a la entrada sea igual
 o superior a 1 kg/cm2. De no conseguir dicha presion por altura del tanque, se debe adicionar una
 bomba presurizadora.
 
-d) La instalación no incluye la instalación eléctrica del tomacorriente, necesaria para el
+e) La instalación no incluye la instalación eléctrica del tomacorriente, necesaria para el
 funcionamiento de la caldera.
 
-e) El presente presupuesto NO incluye ningun trabajo ni material relacionado con la cañería de GAS,
+f) El presente presupuesto NO incluye ningun trabajo ni material relacionado con la cañería de GAS,
 agua fria ni agua caliente sanitaria necesaria y excluyente para el funcionamiento de la caldera.
 
-f) El trabajo de instalación de cañería incluye el canaleteo de pisos y paredes y se entrega con la
+g) El trabajo de instalación de cañería incluye el canaleteo de pisos y paredes y se entrega con la
 misma amurada y fijada, quedando a cargo del cliente el posterior tapado de las canaletas.
 
-g) Puesta en marcha inicial (PEMIO): tiene por objetivo probar el sistema, ponerlo a punto, explicar
+h) Puesta en marcha inicial (PEMIO): tiene por objetivo probar el sistema, ponerlo a punto, explicar
 el funcionamiento a los propietarios y activar la garantía de los equipos. Se realiza inmediatamente
 despues de finalizar la instalación. Para realizarla se debe contar con todos los servicios (energía
 eléctrica, gas y agua) y con la presencia de los propietarios o responsables. De no cumplirse alguno
 de estos requisitos, la PEMIO se realizara en el momento que se cumplan dichos requisitos, con costo
 a cargo del cliente.
 
-h) Condiciones de garantía: Calderas: 12 meses a partir de la PEMIO. La garantía puede extenderse
+i) Condiciones de garantía: Calderas: 12 meses a partir de la PEMIO. La garantía puede extenderse
 12 meses adicionales (logrando 24 meses totales) contratando un servicio de mantenimiento preventivo
 autorizado. Radiadores: 10 años a partir de la PEMIO."""
 
@@ -1096,13 +1098,14 @@ def build_condiciones_pdf() -> bytes:
     story.append(Paragraph("3) NOTAS", sub_style))
     notas = [
         ("a)", "El presente presupuesto tiene validez de 10 días hábiles a partir de la fecha de confeccionado."),
-        ("b)", "Para la instalación del termostato de ambiente, se debe dejar un cableado desde la caldera hasta la ubicacion del mismo segun instrucciones nuestras."),
-        ("c)", "Para el funcionamiento de la caldera se debe dejar una conexión de entrada de agua (a realizar por el cliente segun instrucciones nuestras) y es excluyente que la presion de agua a la entrada sea igual o superior a 1 kg/cm2. De no conseguir dicha presion por altura del tanque, se debe adicionar una bomba presurizadora."),
-        ("d)", "La instalación no incluye la instalación eléctrica del tomacorriente, necesaria para el funcionamiento de la caldera."),
-        ("e)", "El presente presupuesto NO incluye ningun trabajo ni material relacionado con la cañería de GAS, agua fria ni agua caliente sanitaria necesaria y excluyente para el funcionamiento de la caldera."),
-        ("f)", "El trabajo de instalación de cañería incluye el canaleteo de pisos y paredes y se entrega con la misma amurada y fijada, quedando a cargo del cliente el posterior tapado de las canaletas."),
-        ("g)", "Puesta en marcha inicial (PEMIO): tiene por objetivo probar el sistema, ponerlo a punto, explicar el funcionamiento a los propietarios y activar la garantía de los equipos. Se realiza inmediatamente despues de finalizar la instalación. Para realizarla se debe contar con todos los servicios (energía eléctrica, gas y agua) y con la presencia de los propietarios o responsables. De no cumplirse alguno de estos requisitos, la PEMIO se realizara en el momento que se cumplan dichos requisitos, con costo a cargo del cliente."),
-        ("h)", "Condiciones de garantía: Calderas: 12 meses a partir de la PEMIO. La garantía puede extenderse 12 meses adicionales (logrando 24 meses totales) contratando un servicio de mantenimiento preventivo autorizado. Radiadores: 10 años a partir de la PEMIO."),
+        ("b)", "Los valores están expresados en pesos argentinos, calculados según el dólar oficial BNA (tipo vendedor) al día de emisión de éste presupuesto, éstos valores se actualizarán según la cotización vigente al momento del pago o avance de obra."),
+        ("c)", "Para la instalación del termostato de ambiente, se debe dejar un cableado desde la caldera hasta la ubicacion del mismo segun instrucciones nuestras."),
+        ("d)", "Para el funcionamiento de la caldera se debe dejar una conexión de entrada de agua (a realizar por el cliente segun instrucciones nuestras) y es excluyente que la presion de agua a la entrada sea igual o superior a 1 kg/cm2. De no conseguir dicha presion por altura del tanque, se debe adicionar una bomba presurizadora."),
+        ("e)", "La instalación no incluye la instalación eléctrica del tomacorriente, necesaria para el funcionamiento de la caldera."),
+        ("f)", "El presente presupuesto NO incluye ningun trabajo ni material relacionado con la cañería de GAS, agua fria ni agua caliente sanitaria necesaria y excluyente para el funcionamiento de la caldera."),
+        ("g)", "El trabajo de instalación de cañería incluye el canaleteo de pisos y paredes y se entrega con la misma amurada y fijada, quedando a cargo del cliente el posterior tapado de las canaletas."),
+        ("h)", "Puesta en marcha inicial (PEMIO): tiene por objetivo probar el sistema, ponerlo a punto, explicar el funcionamiento a los propietarios y activar la garantía de los equipos. Se realiza inmediatamente despues de finalizar la instalación. Para realizarla se debe contar con todos los servicios (energía eléctrica, gas y agua) y con la presencia de los propietarios o responsables. De no cumplirse alguno de estos requisitos, la PEMIO se realizara en el momento que se cumplan dichos requisitos, con costo a cargo del cliente."),
+        ("i)", "Condiciones de garantía: Calderas: 12 meses a partir de la PEMIO. La garantía puede extenderse 12 meses adicionales (logrando 24 meses totales) contratando un servicio de mantenimiento preventivo autorizado. Radiadores: 10 años a partir de la PEMIO."),
     ]
     nota_label_style = ParagraphStyle("notalabel", fontSize=10, textColor=EULER_DARK,
                                        fontName="Helvetica-Bold")
@@ -1150,7 +1153,7 @@ def build_cierre_pdf(datos_presupuesto: dict) -> bytes:
     garantías = [
         ("Calderas:", "12 meses de garantía a partir de la puesta en marcha inicial obligatoria (PEMIO). Extendible a 24 meses totales contratando servicio de mantenimiento preventivo autorizado."),
         ("Radiadores:", "10 años de garantía a partir de la PEMIO."),
-        ("Instalación:", "Euler garantiza la correcta ejecución de los trabajos. Cualquier inconveniente derivado de la instalación sera atendido sin cargo durante el periodo de garantía."),
+        ("Instalación:", "Euler garantiza la correcta ejecución de los trabajos. La garantía de la mano de obra es de 6 meses a partir de la puesta en marcha. Cualquier inconveniente derivado de la instalación será atendido sin cargo durante el periodo de garantía."),
     ]
     for titulo, texto in garantías:
         t_style = ParagraphStyle("gt", fontSize=10, textColor=EULER_DARK,
