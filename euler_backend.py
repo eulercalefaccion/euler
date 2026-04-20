@@ -1110,11 +1110,20 @@ def build_condiciones_pdf() -> bytes:
     nota_label_style = ParagraphStyle("notalabel", fontSize=10, textColor=EULER_DARK,
                                        fontName="Helvetica-Bold")
     nota_text_style  = ParagraphStyle("notatext", fontSize=10, textColor=GRAY_TEXT,
-                                       fontName="Helvetica", leading=15, leftIndent=18)
+                                       fontName="Helvetica", leading=15)
 
     for letra, texto in notas:
-        story.append(Paragraph(letra, nota_label_style))
-        story.append(Paragraph(texto, nota_text_style))
+        t = Table([
+            [Paragraph(letra, nota_label_style), Paragraph(texto, nota_text_style)]
+        ], colWidths=[18, None])
+        t.setStyle(TableStyle([
+            ("VALIGN", (0,0), (-1,-1), "TOP"),
+            ("LEFTPADDING", (0,0), (-1,-1), 0),
+            ("RIGHTPADDING", (0,0), (-1,-1), 0),
+            ("TOPPADDING", (0,0), (-1,-1), 0),
+            ("BOTTOMPADDING", (0,0), (-1,-1), 0),
+        ]))
+        story.append(t)
         story.append(Spacer(1, 2*mm))
 
     doc.build(story)
