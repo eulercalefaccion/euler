@@ -33,6 +33,29 @@ from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
 from reportlab.lib.utils import ImageReader
 from pypdf import PdfWriter, PdfReader
+import firebase_admin
+from firebase_admin import credentials, firestore, storage
+
+# ─── Inicialización de Firebase ───────────────────────────────────────────────
+firebase_creds_json = os.environ.get("FIREBASE_CREDENTIALS")
+firebase_storage_bucket = os.environ.get("FIREBASE_STORAGE_BUCKET")
+
+db = None
+bucket = None
+
+if firebase_creds_json:
+    try:
+        cred_dict = json.loads(firebase_creds_json)
+        cred = credentials.Certificate(cred_dict)
+        if firebase_storage_bucket:
+            firebase_admin.initialize_app(cred, {'storageBucket': firebase_storage_bucket})
+            bucket = storage.bucket()
+        else:
+            firebase_admin.initialize_app(cred)
+        db = firestore.client()
+        print("Firebase inicializado correctamente.")
+    except Exception as e:
+        print("Error inicializando Firebase:", e)
 
 # ─── Colores Euler ────────────────────────────────────────────────────────────
 EULER_DARK   = colors.HexColor("#0D2A4E")
@@ -1399,19 +1422,40 @@ HISTORIAL_JSON = os.path.join(HISTORIAL_DIR, "historial.json")
 os.makedirs(HISTORIAL_DIR, exist_ok=True)
 
 def historial_cargar():
+    if db:
+        try:
+            docs = db.collection("presupuestos").order_by("id", direction=firestore.Query.DESCENDING).stream()
+            return [doc.to_dict() for doc in docs]
+        except Exception as e:
+            print("Error leyendo Firestore:", e)
+            
     if os.path.exists(HISTORIAL_JSON):
         with open(HISTORIAL_JSON, "r", encoding="utf-8") as f:
             return json.load(f)
     return []
 
 def historial_guardar(registro: dict, pdf_bytes: bytes):
-    registros = historial_cargar()
-    registros.insert(0, registro)
-    with open(HISTORIAL_JSON, "w", encoding="utf-8") as f:
-        json.dump(registros, f, ensure_ascii=False, indent=2)
-    pdf_path = os.path.join(HISTORIAL_DIR, registro["archivo"])
-    with open(pdf_path, "wb") as f:
-        f.write(pdf_bytes)
+    # Guardado local (fallback)
+    try:
+        registros = historial_cargar()
+        if not any(r["id"] == registro["id"] for r in registros):
+            registros.insert(0, registro)
+        with open(HISTORIAL_JSON, "w", encoding="utf-8") as f:
+            json.dump(registros, f, ensure_ascii=False, indent=2)
+        pdf_path = os.path.join(HISTORIAL_DIR, registro["archivo"])
+        with open(pdf_path, "wb") as f:
+            f.write(pdf_bytes)
+    except Exception as e:
+        print("Error en guardado local:", e)
+
+    # Guardado Firebase
+    if db and bucket:
+        try:
+            blob = bucket.blob(f"presupuestos/{registro['archivo']}")
+            blob.upload_from_string(pdf_bytes, content_type='application/pdf')
+            db.collection("presupuestos").document(registro["id"]).set(registro)
+        except Exception as e:
+            print("Error subiendo a Firebase:", e)
 
 # ─── Flask App ────────────────────────────────────────────────────────────────
 app = Flask(__name__)
@@ -1508,11 +1552,30 @@ def descargar_historial(id_registro):
     registro = next((r for r in registros if r["id"] == id_registro), None)
     if not registro:
         return jsonify({"error": "No encontrado"}), 404
-    pdf_path = os.path.join(HISTORIAL_DIR, registro["archivo"])
+        
+    nombre_archivo = registro["archivo"]
+    
+    # Intentar Firebase Storage
+    if bucket:
+        try:
+            blob = bucket.blob(f"presupuestos/{nombre_archivo}")
+            if blob.exists():
+                pdf_bytes = blob.download_as_bytes()
+                return send_file(
+                    io.BytesIO(pdf_bytes),
+                    mimetype="application/pdf",
+                    as_attachment=True,
+                    download_name=nombre_archivo
+                )
+        except Exception as e:
+            print("Error descargando de Firebase:", e)
+            
+    # Intentar archivo local
+    pdf_path = os.path.join(HISTORIAL_DIR, nombre_archivo)
     if not os.path.exists(pdf_path):
         return jsonify({"error": "Archivo no disponible"}), 404
     return send_file(pdf_path, mimetype="application/pdf",
-                     as_attachment=True, download_name=registro["archivo"])
+                     as_attachment=True, download_name=nombre_archivo)
 
 
 @app.route("/catalogo", methods=["GET"])
